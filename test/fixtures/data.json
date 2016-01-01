@@ -1,0 +1,47 @@
+[
+  {
+    "_id": "5684340f74d71be1cc7036e1",
+    "index": 0,
+    "guid": "ea3e1b85-9ad0-4ff5-84ff-dd324e3e0e8d",
+    "isActive": true,
+    "balance": "$1,740.05",
+    "picture": "http://placehold.it/32x32",
+    "age": 33,
+    "eyeColor": "blue",
+    "name": "Doyle Schwartz",
+    "gender": "male",
+    "company": "TALKALOT",
+    "email": "doyleschwartz@talkalot.com",
+    "phone": "+1 (874) 479-3581",
+    "address": "294 Gold Street, Hebron, Kansas, 2213",
+    "about": "Dolor amet culpa ut aliquip aute tempor est ullamco Lorem est irure et aliquip exercitation. Duis ullamco dolore occaecat laboris enim ipsum laborum sint qui culpa elit ipsum magna adipisicing. Aliquip nisi aliqua aute ad. Reprehenderit dolore non aliqua elit nisi voluptate. Occaecat cupidatat aliquip minim id amet fugiat quis ut ullamco commodo labore consequat.\r\n",
+    "registered": "2014-12-24T08:47:01 -01:00",
+    "latitude": -8.162018,
+    "longitude": -3.444611,
+    "tags": [
+      "enim",
+      "culpa",
+      "tempor",
+      "consectetur",
+      "cupidatat",
+      "exercitation",
+      "nisi"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Mejia Rasmussen"
+      },
+      {
+        "id": 1,
+        "name": "Jimenez English"
+      },
+      {
+        "id": 2,
+        "name": "Fern King"
+      }
+    ],
+    "greeting": "Hello, Doyle Schwartz! You have 9 unread messages.",
+    "favoriteFruit": "strawberry"
+  }
+]
