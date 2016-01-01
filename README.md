@@ -1,9 +1,11 @@
+[![Dependency Status](https://gemnasium.com/cstuncsik/gulp-json-minify.svg)](https://gemnasium.com/cstuncsik/gulp-json-minify)
+
 # Gulp wrapper for [node-json-minify](https://www.npmjs.com/package/node-json-minify)
 
 ## Install
 
 ```sh
-$ npm i -S gulp-teddy
+$ npm i -S gulp-json-minify
 ```
 
 ## Usage
