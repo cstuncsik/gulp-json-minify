@@ -2,7 +2,9 @@ module.exports = (function() {
 
     'use strict';
 
-    var through2 = require('through2'),
+    var PLUGIN_NAME = 'gulp-teddy',
+        gutil = require('gulp-util'),
+        through2 = require('through2'),
         jsonMinify = require('node-json-minify');
 
     function createStream(contentStream, streamReadyCallback) {
@@ -23,6 +25,10 @@ module.exports = (function() {
             contentStream.removeListener('readable', read);
             newStream.write(jsonMinify(chunks.toString()));
             streamReadyCallback();
+        });
+
+        contentStream.on('error', function (error) {
+            throw new gutil.PluginError(PLUGIN_NAME, error);
         });
 
         return newStream;
