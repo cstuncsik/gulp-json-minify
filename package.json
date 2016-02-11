@@ -1,15 +1,12 @@
 {
   "name": "gulp-json-minify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Gulp wrapper for node-json-minify",
   "license": "WTFPL",
   "repository": "cstuncsik/gulp-json-minify",
   "author": {
     "name": "Csaba Tuncsik",
     "email": "csaba.tuncsik@gmail.com"
-  },
-  "engines": {
-    "node": ">=0.12.0"
   },
   "scripts": {
     "test": "mocha"
@@ -18,9 +15,10 @@
     "index.js"
   ],
   "keywords": [
-    "gulpplugin",
+    "gulp",
     "json",
-    "minify"
+    "minify",
+    "plugin"
   ],
   "dependencies": {
     "gulp-util": "^3.0.7",

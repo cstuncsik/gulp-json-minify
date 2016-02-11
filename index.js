@@ -2,7 +2,7 @@ module.exports = (function() {
 
     'use strict';
 
-    var PLUGIN_NAME = 'gulp-teddy',
+    var PLUGIN_NAME = 'gulp-json-minify',
         gutil = require('gulp-util'),
         through2 = require('through2'),
         jsonMinify = require('node-json-minify');
