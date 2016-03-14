@@ -1,6 +1,6 @@
 {
   "name": "gulp-json-minify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gulp wrapper for node-json-minify",
   "license": "WTFPL",
   "repository": "cstuncsik/gulp-json-minify",
@@ -23,10 +23,10 @@
   "dependencies": {
     "gulp-util": "^3.0.7",
     "node-json-minify": "^1.0.0",
-    "through2": "^2.0.0"
+    "through2": "^2.0.1"
   },
   "devDependencies": {
-    "mocha": "^2.3.4",
-    "should": "^8.0.2"
+    "mocha": "^2.4.5",
+    "should": "^8.2.2"
   }
 }
