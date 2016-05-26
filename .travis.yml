@@ -6,8 +6,6 @@ cache:
 notifications:
   email: false
 node_js:
-  - '6'
-  - '5'
   - '4'
   - iojs-v3
   - iojs-v2
