@@ -1,15 +1,20 @@
 {
   "name": "gulp-json-minify",
-  "version": "1.0.4",
+  "version": "0.0.0-semantic-release",
   "description": "Gulp wrapper for node-json-minify",
   "license": "WTFPL",
-  "repository": "cstuncsik/gulp-json-minify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cstuncsik/gulp-json-minify.git"
+  },
   "author": {
     "name": "Csaba Tuncsik",
     "email": "csaba.tuncsik@gmail.com"
   },
   "scripts": {
-    "test": "mocha"
+    "commit": "git-cz",
+    "test": "mocha",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "files": [
     "index.js"
@@ -27,7 +32,13 @@
     "through2": "^2.0.1"
   },
   "devDependencies": {
+    "commitizen": "^2.8.1",
+    "cz-conventional-changelog": "^1.1.6",
     "mocha": "^2.4.5",
+    "semantic-release": "^4.3.5",
     "should": "^8.2.2"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
   }
 }

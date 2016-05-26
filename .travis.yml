@@ -1,11 +1,26 @@
+sudo: false
 language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
 node_js:
-  - "0.12"
-deploy:
-  provider: npm
-  email: csaba.tuncsik@gmail.com
-  api_key:
-    secure: xok+Bx1G6W9Wx3/Zvahu3NjN4Y04MzYaiMRRLD9SGJfybmxQ7F6Zs2vPjU4mutRp0z9wyh6ezJOT2XowFcLZgVHVIcNLi5kFV1bfXQfmK9HLf9PzRVUq9e7ckljxkSpljEMjO6OtundwNbPCOAAq7xvGzlQso0siJHs5i6ktnDoAhu6ZI5qnOASdV2CaFtnbY/459WX5BvSDF7nSGjE+xIaoZ9+jhQZTJi85ajI9HXHth1UYbalgKLuhhOIm3ppxnKP9yPjp3qM442yhreRCH155aikg7J6JPLLRmCNvcM3OtiaCb2pcQq9Ed4c3krS0MmxzADxboUY6jhrkZOyipC93UFl+gbPOxSj2pkT4Dva1EX+GfC8MsKgKobIgvHJ62MqFUtla9jae1Zpput+wMqMQ0mDCRwSGveqGhKllLsvYtaL7XdFkQhcjdRpE/vIjQkpvp7fvZq7FTgIx4z8SKc8i4OhCuMF0YwHD/uXqjFotmQAwkpEiPjxBSaCeHUeF86OWWsE7QYQaLjC2puqRXklq0kR0P9atw7Rn8fdQ0EfaS8ox4sdjRnytW+pMF14hR8xxsrlArdGmVDNYG15qJmFaKWZewtX4mGy5Vzx+35eFMEoxTdK1fNvBA+gsqIEwLfokIfg0a61vpPqNGCQ+MspJ8sZSj+cumGsRetWDPJg=
-  on:
-    tags: true
-    repo: cstuncsik/gulp-json-minify
+  - '4'
+  - iojs-v3
+  - iojs-v2
+  - iojs-v1
+  - '0.12'
+  - '0.10'
+before_install:
+  - npm i -g npm@^2.0.0
+before_script:
+  - npm prune
+after_success:
+  - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
+  - python travis_after_all.py
+  - export $(cat .to_export_back) &> /dev/null
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
