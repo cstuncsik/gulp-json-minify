@@ -1,7 +1,11 @@
 {
     "root": true,
     "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 5
+    },
     "env": {
-        "node": true
+        "node": true,
+        "mocha": true
     }
 }

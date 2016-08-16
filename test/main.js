@@ -2,8 +2,9 @@
 
     'use strict';
 
+    require('should');
+
     var gutil = require('gulp-util'),
-        should = require('should'),
         fs = require('fs'),
         path = require('path'),
         paths = {
