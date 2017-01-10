@@ -34,7 +34,7 @@
   "devDependencies": {
     "commitizen": "^2.9.5",
     "cz-conventional-changelog": "^1.2.0",
-    "eslint": "^3.13.0",
+    "eslint": "^3.13.1",
     "mocha": "^3.2.0",
     "semantic-release": "^6.3.2",
     "should": "^11.1.2"
