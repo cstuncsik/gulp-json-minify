@@ -26,7 +26,7 @@
   it('should minify json from buffer', function (cb) {
 
     var jsonFile = createFile(paths.json, 'data.json', 'buffer'),
-      stream = jsonMinify(jsonFile);
+      stream = jsonMinify();
 
     stream.once('data', function (file) {
       file.isBuffer().should.be.true();
@@ -41,7 +41,7 @@
   it('should minify json from stream', function (cb) {
 
     var jsonFile = createFile(paths.json, 'data.json', 'stream'),
-      stream = jsonMinify(jsonFile);
+      stream = jsonMinify();
 
     stream.once('data', function (file) {
       file.isStream().should.be.true();
