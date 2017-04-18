@@ -1,35 +1,33 @@
-(function () {
+require('should');
 
-  'use strict';
+const es = require('event-stream');
+const gutil = require('gulp-util');
+const fs = require('fs');
+const path = require('path');
+const paths = {
+  json: path.join(__dirname, 'fixtures')
+};
+const jsonMinify = require('../');
 
-  require('should');
+const createFile = (base, file, type) => {
+  const filePath = path.join(base, file);
 
-  var es = require('event-stream'),
-    gutil = require('gulp-util'),
-    fs = require('fs'),
-    path = require('path'),
-    paths = {
-      json: path.join(__dirname, 'fixtures')
-    },
-    jsonMinify = require('../');
+  return new gutil.File({
+    cwd: __dirname,
+    base: base,
+    path: filePath,
+    contents: (type === 'buffer') ? fs.readFileSync(filePath) : fs.createReadStream(filePath)
+  });
+};
 
-  function createFile(base, file, type) {
-    var filePath = path.join(base, file);
+describe('gulp-json-minify', () => {
 
-    return new gutil.File({
-      cwd: __dirname,
-      base: base,
-      path: filePath,
-      contents: (type === 'buffer') ? fs.readFileSync(filePath) : fs.createReadStream(filePath)
-    });
-  }
+  it('should minify json from buffer', cb => {
 
-  it('should minify json from buffer', function (cb) {
+    const jsonFile = createFile(paths.json, 'data.json', 'buffer');
+    const stream = jsonMinify();
 
-    var jsonFile = createFile(paths.json, 'data.json', 'buffer'),
-      stream = jsonMinify();
-
-    stream.once('data', function (file) {
+    stream.once('data', file => {
       file.isBuffer().should.be.true();
       String(file.contents).should.equal(fs.readFileSync(path.join(__dirname, 'expect/data.json'), 'utf8'));
       cb();
@@ -38,14 +36,14 @@
     stream.write(jsonFile);
   });
 
-  it('should minify json from stream', function (cb) {
+  it('should minify json from stream', cb => {
 
-    var jsonFile = createFile(paths.json, 'data.json', 'stream'),
-      stream = jsonMinify();
+    const jsonFile = createFile(paths.json, 'data.json', 'stream');
+    const stream = jsonMinify();
 
-    stream.once('data', function (file) {
+    stream.once('data', file => {
       file.isStream().should.be.true();
-      file.contents.pipe(es.wait(function(err, data) {
+      file.contents.pipe(es.wait((err, data) => {
         String(data).should.equal(fs.readFileSync(path.join(__dirname, 'expect/data.json'), 'utf8'));
         cb();
       }));
@@ -53,4 +51,5 @@
 
     stream.write(jsonFile);
   });
-})();
+});
+
