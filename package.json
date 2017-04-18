@@ -27,6 +27,7 @@
     "plugin"
   ],
   "dependencies": {
+    "event-stream": "^3.3.4",
     "gulp-util": "^3.0.8",
     "node-json-minify": "^1.0.0",
     "through2": "^2.0.3"

@@ -4,7 +4,8 @@
 
   require('should');
 
-  var gutil = require('gulp-util'),
+  var es = require('event-stream'),
+    gutil = require('gulp-util'),
     fs = require('fs'),
     path = require('path'),
     paths = {
@@ -31,11 +32,10 @@
     stream.once('data', function (file) {
       file.isBuffer().should.be.true();
       String(file.contents).should.equal(fs.readFileSync(path.join(__dirname, 'expect/data.json'), 'utf8'));
+      cb();
     });
 
     stream.write(jsonFile);
-    stream.on('end', cb);
-    stream.end();
   });
 
   it('should minify json from stream', function (cb) {
@@ -45,11 +45,12 @@
 
     stream.once('data', function (file) {
       file.isStream().should.be.true();
-      String(file.contents.read()).should.equal(fs.readFileSync(path.join(__dirname, 'expect/data.json'), 'utf8'));
+      file.contents.pipe(es.wait(function(err, data) {
+        String(data).should.equal(fs.readFileSync(path.join(__dirname, 'expect/data.json'), 'utf8'));
+        cb();
+      }));
     });
 
     stream.write(jsonFile);
-    stream.on('end', cb);
-    stream.end();
   });
 })();
