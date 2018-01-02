@@ -1,4 +1,3 @@
-const es = require('event-stream');
 const through2 = require('through2');
 const jsonMinify = require('node-json-minify');
 
@@ -10,8 +9,8 @@ module.exports = () => through2.obj((file, enc, cb) => {
     file.contents = new Buffer(jsonMinify(file.contents.toString()));
   }
   if (file.isStream()) {
-    file.contents = file.contents.pipe(es.map((json, callback) => {
-      callback(null, jsonMinify(json.toString()));
+    file.contents = file.contents.pipe(through2.obj((json, enc, cb) => {
+      cb(null, jsonMinify(json.toString()));
     }));
   }
   cb(null, file);

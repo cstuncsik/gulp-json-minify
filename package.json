@@ -2,7 +2,7 @@
   "name": "gulp-json-minify",
   "version": "0.0.0-semantic-release",
   "description": "Gulp wrapper for node-json-minify",
-  "license": "WTFPL",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/cstuncsik/gulp-json-minify.git"
@@ -28,18 +28,17 @@
     "plugin"
   ],
   "dependencies": {
-    "event-stream": "^3.3.4",
-    "gulp-util": "^3.0.8",
     "node-json-minify": "^1.0.0",
     "through2": "^2.0.3"
   },
   "devDependencies": {
     "commitizen": "^2.9.5",
-    "cz-conventional-changelog": "^2.0.0",
-    "eslint": "^3.19.0",
-    "mocha": "^3.4.0",
-    "semantic-release": "^6.3.2",
-    "should": "^11.1.2"
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^4.14.0",
+    "mocha": "^4.1.0",
+    "semantic-release": "^11.0.2",
+    "should": "^13.2.0",
+    "vinyl": "^2.1.0"
   },
   "config": {
     "commitizen": {

@@ -1,7 +1,7 @@
 require('should');
 
-const es = require('event-stream');
-const gutil = require('gulp-util');
+const through2 = require('through2');
+const Vinyl = require('vinyl');
 const fs = require('fs');
 const path = require('path');
 const paths = {
@@ -12,7 +12,7 @@ const jsonMinify = require('../');
 const createFile = (base, file, type) => {
   const filePath = path.join(base, file);
 
-  return new gutil.File({
+  return new Vinyl({
     cwd: __dirname,
     base: base,
     path: filePath,
@@ -22,7 +22,7 @@ const createFile = (base, file, type) => {
 
 describe('gulp-json-minify', () => {
 
-  it('should minify json from buffer', cb => {
+  it('should minify json from buffer', done => {
 
     const jsonFile = createFile(paths.json, 'data.json', 'buffer');
     const stream = jsonMinify();
@@ -30,26 +30,26 @@ describe('gulp-json-minify', () => {
     stream.once('data', file => {
       file.isBuffer().should.be.true();
       String(file.contents).should.equal(fs.readFileSync(path.join(__dirname, 'expect/data.json'), 'utf8'));
-      cb();
+      done();
     });
 
     stream.write(jsonFile);
   });
 
-  it('should minify json from stream', cb => {
+  it('should minify json from stream', done => {
 
     const jsonFile = createFile(paths.json, 'data.json', 'stream');
     const stream = jsonMinify();
 
     stream.once('data', file => {
       file.isStream().should.be.true();
-      file.contents.pipe(es.wait((err, data) => {
+      file.contents.pipe(through2.obj((data, enc, cb) => {
         String(data).should.equal(fs.readFileSync(path.join(__dirname, 'expect/data.json'), 'utf8'));
-        cb();
+        cb(null, data);
+        done();
       }));
     });
 
     stream.write(jsonFile);
   });
 });
-
