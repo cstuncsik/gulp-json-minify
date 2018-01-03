@@ -20,14 +20,14 @@ jobs:
       node_js: 8
       os: linux
       after_success:
-        - npm run semantic-release
+        - yarn semantic-release
         - bash yarn.sh
 install:
   - yarn install --ignore-engines
 before_script:
-  - npm run lint
+  - yarn lint
 script:
-  - npm test
+  - yarn test
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/

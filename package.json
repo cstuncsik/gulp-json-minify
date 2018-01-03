@@ -15,7 +15,7 @@
     "commit": "git-cz",
     "test": "mocha",
     "lint": "eslint .",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release"
   },
   "files": [
     "index.js"
