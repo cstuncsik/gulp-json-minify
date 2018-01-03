@@ -22,6 +22,8 @@ jobs:
       after_success:
         - npm run semantic-release
         - bash yarn.sh
+install:
+  - yarn install --ignore-engines
 before_script:
   - npm run lint
 script:
