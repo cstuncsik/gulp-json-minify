@@ -45,6 +45,9 @@
     "semantic-release": "^21.0.7",
     "vinyl": "^3.0.0"
   },
+  "resolutions": {
+    "wrap-ansi": "7.0.0"
+  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
