@@ -1,32 +1,24 @@
-sudo: false
 language: node_js
+node_js:
+  - 16
 cache:
   directories:
     - node_modules
-notifications:
-  email: false
-node_js:
-  - 8
-  - 6
-os:
-  - linux
-  - osx
-env:
-  - BUILD_LEADER_ID=5
-jobs:
-  include:
-    - stage: release
-      node_js: 8
-      os: linux
-      after_success:
-        - yarn semantic-release
-        - bash yarn.sh
-install:
-  - yarn install --ignore-engines
 before_script:
+  - yarn install --ignore-engines
   - yarn lint
 script:
   - yarn test
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - npx semantic-release
+  on:
+    branch: master
+notifications:
+  email:
+    recipients:
+      - csaba.tuncsik@gmail.com
+    on_success: always
+    on_failure: always
